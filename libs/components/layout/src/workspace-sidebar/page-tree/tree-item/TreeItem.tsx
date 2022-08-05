@@ -3,7 +3,7 @@ import React, {
     type CSSProperties,
     type HTMLAttributes,
 } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import cx from 'clsx';
 import { CloseIcon, DocumentIcon } from '@toeverything/components/common';
 import {
@@ -103,15 +103,13 @@ export const TreeItem = forwardRef<HTMLDivElement, TreeItemProps>(
                     </Action>
 
                     <div className={styles['ItemContent']}>
-                        <span
+                        <Link
                             className={styles['Text']}
                             {...handleProps}
-                            onClick={() => {
-                                navigate(`/${workspace_id}/${pageId}`);
-                            }}
+                            to={`/${workspace_id}/${pageId}`}
                         >
                             {value}
-                        </span>
+                        </Link>
                         {BooleanPageTreeItemMoreActions && (
                             <MoreActions
                                 workspaceId={workspace_id}
